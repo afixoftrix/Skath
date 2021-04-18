@@ -1,21 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Navbar from './src/Components/Navbar';
+import styled from 'styled-components/native';
+import Home from './src/Pages/Home';
+import {
+  useFonts,
+  SourceSansPro_400Regular,
+  SourceSansPro_700Bold,
+} from "@expo-google-fonts/source-sans-pro";
+
+const AppContainer = styled.View`
+  padding: 10px;
+`;
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    SourceSansPro_400Regular,
+    SourceSansPro_700Bold,
+  });
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      { fontsLoaded ? 
+        <AppContainer style={{ fontFamily: "SourceSansPro_400Regular"}}>
+          <Navbar />
+          <Home />
+        </AppContainer> 
+        : <Text>...loading</Text>
+      }
+    </SafeAreaView>
   );
 }
+      //    <StatusBar style="auto" />;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
