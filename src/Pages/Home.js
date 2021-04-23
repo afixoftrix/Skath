@@ -6,6 +6,8 @@ import { MainBtn } from '../Components/Buttons';
 
 const HomeContainer = styled.View`
   padding: 10px;
+  background: #fff;
+  height: 100%;
 `;
 
 const ButtonsContainer = styled.View`
@@ -17,27 +19,33 @@ const ButtonsContainer = styled.View`
 const startTrackingImg = require("../../assets/start-tracking-btn.png")
 const diaryEntryImg = require("../../assets/diary-entry.png");
 
-export default class Home extends Component {
-  render() {
-    return (
-      <HomeContainer>
-        <TitleDesc title="Howdy Inquisitor,">
-          <Text>
-            To get started tracking yourself using your phone’s metrics, tap
-            Start Tracking. To record something else, tap Diary Entry.
-          </Text>
-        </TitleDesc>
-        <ButtonsContainer>
-          <MainBtn
-            bgImg={startTrackingImg}
-            btnTxt="Start tracking"
-          />
-          <MainBtn
-            bgImg={diaryEntryImg}
-            btnTxt="Diary Entry"
-          />
-        </ButtonsContainer>
-      </HomeContainer>
-    );
-  }
+const Home = ({ navigation }) => {
+  return (
+    <HomeContainer>
+      <TitleDesc title="Howdy Inquisitor,">
+        <Text>
+          To get started tracking yourself using your phone’s metrics, tap Start
+          Tracking. To record something else, tap Diary Entry.
+        </Text>
+      </TitleDesc>
+      <ButtonsContainer>
+        <MainBtn
+          bgImg={startTrackingImg}
+          btnTxt="Start Tracking"
+          onPress={() => {
+            navigation.push("Set Tracker");
+          }}
+        />
+        <MainBtn
+          bgImg={diaryEntryImg}
+          btnTxt="Diary Entry"
+          onPress={() => {
+            navigation.push("PreTracker");
+          }}
+        />
+      </ButtonsContainer>
+    </HomeContainer>
+  );
 }
+
+export default Home;
