@@ -19,11 +19,31 @@ const BtnTxt = styled.Text`
   margin: auto 0;
 `;
 
+const BaseBtnText = styled.Text`
+  font-family: SourceSansPro_700Bold;
+  text-transform: uppercase;
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+  color: ${ props => props.disabled ? "#8f8f8f" : "#000" };
+`;
+
+export const FinishBtn = styled.TouchableOpacity`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f55;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+`;
+
+
 export const MainBtn = ({ btnTxt, bgImg, onPress }) => {
   return (
     <BtnContainer bg={bgImg} style={styles.container} onPress={onPress} ht="200px">
       <Image source={bgImg} style={styles.image} />
-        <BtnTxt style={{ fontFamily: "SourceSansPro_700Bold"}}>
+        <BtnTxt style={{ fontFamily: "SourceSansPro_700Bold", lineHeight: 36}}>
           {btnTxt}
         </BtnTxt>
     </BtnContainer>
@@ -38,10 +58,10 @@ export const NavBtn = () => {
   )
 }
 
-export const BaseBtn = ({ name, onPress }) => {
+export const BaseBtn = ({ name, onPress, disabled }) => {
   return (
-    <BtnContainer onPress={onPress}>
-      <Text style={styles.baseBtnTxt}>{name}</Text>
+    <BtnContainer disabled={disabled} onPress={onPress}>
+      <BaseBtnText disabled={disabled}>{name}</BaseBtnText>
     </BtnContainer>
   );
 }
@@ -60,13 +80,6 @@ const styles = StyleSheet.create({
     width: 200,
     position: "absolute",
     right: 0,
-  },
-  baseBtnTxt: {
-    fontFamily: "SourceSansPro_700Bold",
-    textTransform: "uppercase",
-    fontSize: 24,
-    textAlign: 'center',
-    padding: 20
   },
 });
 

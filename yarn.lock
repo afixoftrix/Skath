@@ -1149,6 +1149,26 @@
     xcode "^3.0.1"
     xml2js "^0.4.23"
 
+"@expo/config-plugins@^1.0.18":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-1.0.28.tgz#6c3911d493bc329bf9ef5c99585564539b1a57e1"
+  integrity sha512-i5SpC6U3LjRQlwi1xM4SRj8dR2Qm+0dykPo0GeesByB7IvT36AT1ZjI7VjecuoZ6yKbLpaa5tWvU3JGObxIPSw==
+  dependencies:
+    "@expo/config-types" "^40.0.0-beta.2"
+    "@expo/configure-splash-screen" "0.3.4"
+    "@expo/image-utils" "0.3.13"
+    "@expo/json-file" "8.2.29"
+    "@expo/plist" "0.0.12"
+    find-up "~5.0.0"
+    fs-extra "9.0.0"
+    getenv "^1.0.0"
+    glob "7.1.6"
+    resolve-from "^5.0.0"
+    slash "^3.0.0"
+    slugify "^1.3.4"
+    xcode "^3.0.1"
+    xml2js "^0.4.23"
+
 "@expo/config-types@^40.0.0-beta.2":
   version "40.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-40.0.0-beta.2.tgz#4fea4ef5654d02218b02b0b3772529a9ce5b0471"
@@ -1207,10 +1227,37 @@
     semver "7.3.2"
     tempy "0.3.0"
 
+"@expo/image-utils@0.3.13":
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/@expo/image-utils/-/image-utils-0.3.13.tgz#cba070a61ce89e6c113b8e6afd5655cb83da6377"
+  integrity sha512-BpKoFVJBjG9H5AU040Skrm3R2uDGpWXBU/4TivB5H10cyJphoJKp3GNJVPHYLOVc70OtAxjWDIhLMW6xsWfrgw==
+  dependencies:
+    "@expo/spawn-async" "1.5.0"
+    chalk "^4.0.0"
+    fs-extra "9.0.0"
+    getenv "^1.0.0"
+    jimp "0.12.1"
+    mime "^2.4.4"
+    node-fetch "^2.6.0"
+    parse-png "^2.1.0"
+    resolve-from "^5.0.0"
+    semver "7.3.2"
+    tempy "0.3.0"
+
 "@expo/json-file@8.2.28":
   version "8.2.28"
   resolved "https://registry.yarnpkg.com/@expo/json-file/-/json-file-8.2.28.tgz#9218bb70ad12d8be03c6376990b01fbeb4a15b72"
   integrity sha512-C28McDuCIOmCmp6e2ZgIpNaT/fZG+L3/WFv5x2DCrooOQmamrkLSH/4Dib0NUmLgWVhgIhXL2hU4RB+LjzVvkQ==
+  dependencies:
+    "@babel/code-frame" "~7.10.4"
+    fs-extra "9.0.0"
+    json5 "^1.0.1"
+    write-file-atomic "^2.3.0"
+
+"@expo/json-file@8.2.29":
+  version "8.2.29"
+  resolved "https://registry.yarnpkg.com/@expo/json-file/-/json-file-8.2.29.tgz#5e66c4c1dc531a583fe654d99fe417246d91741d"
+  integrity sha512-9C8XwpJiJN9fyClnnNDSTh034zJU9hon6MCUqbBa4dZYQN7OZ00KFZEpbtjy+FndE7YD+KagDxRD6O1HS5vU0g==
   dependencies:
     "@babel/code-frame" "~7.10.4"
     fs-extra "9.0.0"
@@ -2153,6 +2200,13 @@ available-typed-arrays@^1.0.2:
   integrity sha512-XWX3OX8Onv97LMk/ftVyBibpGwY5a8SmuxZPzeOxqmuEqUCOM9ZE+uIaD1VNJ5QnvU2UQusvmKbuM1FR8QWGfQ==
   dependencies:
     array-filter "^1.0.0"
+
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 babel-plugin-dynamic-import-node@^2.3.3:
   version "2.3.3"
@@ -3201,6 +3255,14 @@ expo-linking@~2.0.1:
     qs "^6.5.0"
     url-parse "^1.4.4"
 
+expo-location@^12.0.4:
+  version "12.0.4"
+  resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-12.0.4.tgz#718b69516d5efdf8dec6d301c72b791df2da7f24"
+  integrity sha512-IZaqdBefD8VYmr6hoewQBA4yGfJ5seP1N1UfdwMnH/+l04KJIDfeJZqcV4f9srNnWofxM+aIf1VURPfjS7hkEA==
+  dependencies:
+    "@expo/config-plugins" "^1.0.18"
+    unimodules-permissions-interface "~6.1.0"
+
 expo-location@~10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-10.0.0.tgz#2923411649434f2f079343b163b13c5c9eee8b2d"
@@ -3215,6 +3277,13 @@ expo-secure-store@~9.3.0:
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-9.3.0.tgz#b716d5d115cc50a34037d1afef84fe4b8ea0745c"
   integrity sha512-dNhKcoUUn+1kmEfFVxSU7h+YsqODqlExZQJcQgxgeiuCeeDvJWkE10t3jjrO6aNfrdM5i/X2l3oh401EDslWsQ==
+
+expo-sensors@~9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/expo-sensors/-/expo-sensors-9.2.0.tgz#4b0c0f85236c874eb99646114e05bb1bd2172058"
+  integrity sha512-HKRFHev1ZclEbeZKdgbTCSpTu8N9WT8Asw3jckno6cCENjV1P7lSrbBx0HCW6q4cO/DcZ0QGvOjQ/LNNE4bCDQ==
+  dependencies:
+    invariant "^2.2.4"
 
 expo-sqlite@~8.5.0:
   version "8.5.0"
@@ -3483,6 +3552,11 @@ find-up@~5.0.0:
   dependencies:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
+
+follow-redirects@^1.10.0:
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.3.tgz#e5598ad50174c1bc4e872301e82ac2cd97f90267"
+  integrity sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
 
 fontfaceobserver@^2.1.0:
   version "2.1.0"
@@ -4819,6 +4893,11 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -5444,6 +5523,11 @@ react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
+
+react-native-maps@0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.27.1.tgz#2f10cd417bb2fd938c9e015b1c9b6d9b1a44b97f"
+  integrity sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw==
 
 react-native-reanimated@~1.13.0:
   version "1.13.3"
@@ -6429,6 +6513,11 @@ unimodules-permissions-interface@~5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/unimodules-permissions-interface/-/unimodules-permissions-interface-5.4.0.tgz#cdadfdcca8b50660b9d4027c6487323346bedb0e"
   integrity sha512-mb+uiWvf2M/og7bA28CYOH6uKsAg/7oRBodZNsXVRH/h5LjQlBd5lTECH/L3Hkm3Ta7NSQUnENtXUCO4jfnVkg==
+
+unimodules-permissions-interface@~6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/unimodules-permissions-interface/-/unimodules-permissions-interface-6.1.0.tgz#fd5589945e3b8fc9d2c80c52521853caea85a9ca"
+  integrity sha512-jeJx/y+Vn/Cp1/4su5XJ06UBul83MpXkYEqIOAb2jwaikhmj6tNwko7HpKy9OhfGfrhddCzwtedlro8xxZUk9A==
 
 unimodules-sensors-interface@~5.4.0:
   version "5.4.0"

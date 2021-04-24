@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import TitleDesc from '../Components/TitleDesc';
 import { MainBtn } from '../Components/Buttons';
 
-const HomeContainer = styled.View`
+export const HomeContainer = styled.View`
   padding: 10px;
   background: #fff;
   height: 100%;
@@ -23,7 +23,7 @@ const Home = ({ navigation }) => {
   return (
     <HomeContainer>
       <TitleDesc title="Howdy Inquisitor,">
-        <Text>
+        <Text style={{ paddingRight: 40, fontSize: 16, lineHeight: 22 }}>
           To get started tracking yourself using your phone’s metrics, tap Start
           Tracking. To record something else, tap Diary Entry.
         </Text>
@@ -38,9 +38,9 @@ const Home = ({ navigation }) => {
         />
         <MainBtn
           bgImg={diaryEntryImg}
-          btnTxt="Diary Entry"
+          btnTxt="Data Entries"
           onPress={() => {
-            navigation.push("PreTracker");
+            navigation.push("Records");
           }}
         />
       </ButtonsContainer>

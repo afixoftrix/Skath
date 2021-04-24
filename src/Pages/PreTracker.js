@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { View, Text, SafeAreaView } from "react-native";
@@ -17,12 +17,8 @@ const trackers = [
     img: require("../../assets/steps-tracking.png"),
   },
   {
-    title: "location",
+    title: "Location",
     img: require("../../assets/location-tracking.png"),
-  },
-  {
-    title: "alerts",
-    img: require("../../assets/alerts-tracking.png"),
   },
 ];
 
@@ -50,6 +46,12 @@ const TrackBtnContainer = styled.View`
 const PreTracker = ({ navigation }) => {
   const state = useSelector((state) => state.trackOptions);
   const dispatch = useDispatch();
+  // const [validOptions, setValidOptions] = useState(false)
+
+  // useEffect(() => {
+  //   if (state.tra)
+  // }, [state.trackOptions.tracks])
+
   return (
     <SafeAreaView style={{ backgroundColor: "#fff" }}>
       <Page>
@@ -67,7 +69,6 @@ const PreTracker = ({ navigation }) => {
             return (
               <TrackOptionCard
                 onPress={() => {
-                  console.log(state.tracks, title);
                   !isSelected
                     ? dispatch(addOption(title))
                     : dispatch(removeOption(title));
@@ -87,6 +88,7 @@ const PreTracker = ({ navigation }) => {
             onPress={() => {
               navigation.push("Tracker");
             }}
+            disabled={state.tracks.length === 0}//if no tracks are selected let the button be disabled
           />
         </TrackBtnContainer>
       </Page>

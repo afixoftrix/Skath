@@ -16,6 +16,7 @@ import {
 import PreTracker from './src/Pages/PreTracker';
 import store from './src/redux/store';
 import Tracker from './src/Pages/Tracker';
+import Records from './src/Pages/Records';
 
 const AppContainer = styled.View`
   padding: 10px;
@@ -38,6 +39,7 @@ export default function App() {
             <Root.Screen name="Home" component={Home} />
             <Root.Screen name="Set Tracker" component={PreTracker} />
             <Root.Screen name="Tracker" component={Tracker} />
+            <Root.Screen name="Records" component={Records} />
           </Root.Navigator>
         )}
       </NavigationContainer>

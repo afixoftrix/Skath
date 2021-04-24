@@ -6,15 +6,16 @@ import { useFonts, SourceSansPro_400Regular, SourceSansPro_700Bold } from "@expo
 
 const Container = styled.View`
   height: auto;
-  padding-top: 20px;
+  padding-top: 40px;
 `;
 
 const Title = styled.Text`
   font-weight: 700;
   font-size: 24px;
+  margin-bottom: 10px;
 `;
 const Desc = styled.View`
-  height: 107px;
+  height: 87px;
 `;
 
 const TitleDesc = ({ title, desc, children }) => {
