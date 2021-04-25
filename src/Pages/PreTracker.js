@@ -5,7 +5,8 @@ import { View, Text, SafeAreaView } from "react-native";
 import TitleDesc from "../Components/TitleDesc";
 import TrackOptionCard from "../Components/TrackOptionCard";
 import { BaseBtn } from "../Components/Buttons";
-import { addOption, removeOption } from "../redux/trackOptions";
+import { addOption, removeOption, resetTracks } from "../redux/trackOptions";
+import { useRoute } from "@react-navigation/native";
 
 const trackers = [
   {
@@ -46,18 +47,22 @@ const TrackBtnContainer = styled.View`
 const PreTracker = ({ navigation }) => {
   const state = useSelector((state) => state.trackOptions);
   const dispatch = useDispatch();
+  const route = useRoute();
   // const [validOptions, setValidOptions] = useState(false)
 
-  // useEffect(() => {
-  //   if (state.tra)
-  // }, [state.trackOptions.tracks])
+  useEffect(() => {
+    console.log(state.tracks.length);
+    if (state.tracks.length > 0) {
+      dispatch(resetTracks());
+    }
+  }, [route.name, navigation]);
 
   return (
     <SafeAreaView style={{ backgroundColor: "#fff" }}>
       <Page>
         <TitleContainer>
           <TitleDesc title="Tracking">
-            <Text>
+            <Text style={{ paddingRight: 40, fontSize: 16, lineHeight: 22 }}>
               To start tracking select metrics from the list that you would like
               to track realtime.
             </Text>
@@ -88,7 +93,7 @@ const PreTracker = ({ navigation }) => {
             onPress={() => {
               navigation.push("Tracker");
             }}
-            disabled={state.tracks.length === 0}//if no tracks are selected let the button be disabled
+            disabled={state.tracks.length === 0} //if no tracks are selected let the button be disabled
           />
         </TrackBtnContainer>
       </Page>

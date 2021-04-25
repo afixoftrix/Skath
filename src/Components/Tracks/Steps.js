@@ -5,12 +5,26 @@ import styled from 'styled-components';
 import { Pedometer } from "expo-sensors";
 
 import { updateSteps } from "../../redux/steps";
+import { collectSteps } from "../../redux/records";
 
 
 const Container = styled.View`
   border: 2px solid #000;
   border-radius: 10px;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0;
+  background-color: #fff;
+`;
+const StepsTitle = styled.Text`
+  font-weight: 700;
+  font-size: 24px;
+`;
+const Steps = styled.Text`
+  font-size: 24px;
 `;
 
 const StepsTrack = () => {
@@ -22,6 +36,7 @@ const StepsTrack = () => {
     _subscription = Pedometer.watchStepCount(result => {
       setStepCount(result.steps);
       dispatch(updateSteps(result.steps));
+      dispatch(collectSteps(result.steps));
   })}
 
   const _unsubscribe = () => {
@@ -39,8 +54,8 @@ const StepsTrack = () => {
 
   return (
     <Container>
-      <Text>STEPS</Text>
-      <Text>{stepCount}</Text>
+      <StepsTitle>Steps Taken: </StepsTitle>
+      <Steps>{stepCount}</Steps>
     </Container>
   );
 };

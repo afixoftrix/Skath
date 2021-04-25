@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, Text } from 'react-native'
 import styled from 'styled-components/native';
-import { useFonts, SourceSansPro_400Regular, SourceSansPro_700Bold } from "@expo-google-fonts/source-sans-pro";
 
-
+/**
+ * Visual component for rendering the title and description of each page
+ */
 const Container = styled.View`
   height: auto;
   padding-top: 40px;

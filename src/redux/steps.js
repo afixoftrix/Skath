@@ -9,6 +9,7 @@ const stepsSlice = createSlice({
   initialState,
   reducers: {
     updateSteps: (state, { payload }) => {
+      console.log('rdx payload: ', payload);
       state.steps = payload;
     },
     resetSteps: (state) => {

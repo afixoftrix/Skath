@@ -1,8 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment";
 
 const initialState = {
+  ticks: 0,
+  datum: {
+    location: "",
+    place: "",
+    temp: "",
+    weather: "",
+    steps: "",
+    timeStamp: "",
+  },
   sessionRecord: {
-    date: '',
+    date: "",
     data: [],
   },
   records: [],
@@ -12,18 +22,49 @@ const recordsSlice = createSlice({
   name: "records",
   initialState,
   reducers: {
-    addData: (state, { payload }) => {
-      state.sessionRecord.data.push(payload);
+    transferDatum: (state, { payload }) => {
+      console.log(state.datum);
+      state.datum.timeStamp = moment().format();
+      state.sessionRecord.data.push(state.datum);
     },
-    postToRecords: (state, {payload}) => {
+    incrementTick: (state) => {
+      state.ticks++;
+    },
+    postToRecords: (state, { payload }) => {
       state.records.push(state.sessionRecord);
       state.sessionRecord = initialState.sessionRecord;
+      state.ticks = 0;
     },
-    finishRecording: (state, {payload}) => {
-      state.sessionRecord.date = payload
+    finishRecording: (state, { payload }) => {
+      state.sessionRecord.date = payload;
+    },
+    collectSteps: (state, { payload }) => {
+      state.datum.steps = payload;
+    },
+    collectTemp: (state, { payload }) => {
+      state.datum.temp = payload;
+    },
+    collectWeather: (state, { payload }) => {
+      state.datum.weather = payload;
+    },
+    collectPlace: (state, { payload }) => {
+      state.datum.place = payload;
+    },
+    collectLocation: (state, { payload }) => {
+      state.datum.location = payload;
     },
   },
 });
 
-export const { addData, postToRecords, finishRecording } = recordsSlice.actions;
+export const {
+  transferDatum,
+  incrementTick,
+  postToRecords,
+  finishRecording,
+  collectPlace,
+  collectSteps,
+  collectTemp,
+  collectWeather,
+  collectLocation,
+} = recordsSlice.actions;
 export default recordsSlice.reducer;

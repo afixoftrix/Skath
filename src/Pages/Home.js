@@ -4,6 +4,9 @@ import { Text, View } from 'react-native';
 import TitleDesc from '../Components/TitleDesc';
 import { MainBtn } from '../Components/Buttons';
 
+/**
+ * Homepage 
+ */
 export const HomeContainer = styled.View`
   padding: 10px;
   background: #fff;
@@ -14,8 +17,6 @@ const ButtonsContainer = styled.View`
   margin-top: 20px;
 `
 
-// const startTrackingImg = require("../../assets/start-tracking-btn.png");
-// const diaryEntryImg = require("../../assets/diary-entry.png");
 const startTrackingImg = require("../../assets/start-tracking-btn.png")
 const diaryEntryImg = require("../../assets/diary-entry.png");
 

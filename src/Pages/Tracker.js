@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 import moment from 'moment';
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
@@ -9,9 +9,8 @@ import StopWatch from "../Components/Tracks/StopWatch";
 import WeatherTrack from "../Components/Tracks/Weather";
 import LocationTrack from "../Components/Tracks/Location";
 import StepsTrack from "../Components/Tracks/Steps";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
-import { addData, finishRecording, postToRecords } from "../redux/records";
+import { transferDatum, collectLocation, collectPlace, collectTemp, finishRecording, postToRecords, collectWeather, incrementTick } from "../redux/records";
 import { FinishBtn } from "../Components/Buttons";
 import { updateLocation } from "../redux/location";
 
@@ -37,26 +36,10 @@ const Tracker = ({ navigation }) => {
   const { interval, tracks } = useSelector((state) => state.trackOptions);
   const state = useSelector(state => state);
   const dispatch = useDispatch();
-  let dataToAdd;
   
-  const pushData = (state) => {
-    console.log(state)
-    dataToAdd = {
-      location:
-        tracks.indexOf("Location") !== -1 ? state.location.location : null,
-      place: tracks.indexOf("Location") !== -1 ? state.location.place : null,
-      temp:
-        tracks.indexOf("Weather") !== -1
-          ? state.weather.data.main.temp || ""
-          : null,
-      weather:
-        tracks.indexOf("Weather") !== -1
-          ? state.weather.data.weather[0].description || ""
-          : null,
-      steps: tracks.indexOf("Steps") !== -1 ? state.steps.steps : null,
-      timeStamp: moment().format(),
-    };
-    dispatch(addData(dataToAdd));
+  const pushData = () => {
+    dispatch(transferDatum());
+    dispatch(incrementTick());
   };
   
   useEffect(() => {
@@ -64,7 +47,7 @@ const Tracker = ({ navigation }) => {
      * NOTE: There's probably a better way to implement these promises using async/await nomenclature.
      * I just dont remember how to use in this scenario at the time of coding this. So I'm using the old callback methods.
      */
-    
+    console.log('use effect ran')
     Permissions.askAsync(Permissions.LOCATION)
       .then(() => {
         Location.getCurrentPositionAsync({}).then((res) => {
@@ -74,6 +57,7 @@ const Tracker = ({ navigation }) => {
             long: res.coords.longitude,
           };
           setCoords(coords);
+          console.log('coords was successful')
           Location.reverseGeocodeAsync({
             //Transform longitude and lattitude into human readable location
             longitude: coords.long,
@@ -85,25 +69,32 @@ const Tracker = ({ navigation }) => {
                 city: res[0].city,
                 country: res[0].country,
               });
-              updateLocation({ location: coords, place: locationName})
+          console.log("location was successful");
+              console.log(loading)
+              updateLocation({ location: coords, place: locationName});
+              console.log(locationName);
+              dispatch(collectLocation(coords));
+              dispatch(collectPlace(locationName));
+              dispatch(collectTemp(state.weather.data.main.temp));
+              dispatch(collectWeather(state.weather.data.weather[0].main));
               setLoading(false);
             })
-            .catch((err) => err);
+            .catch((err) =>{ 
+              console.log(err)
+              setLoading(false);
+            });
         });
       })
       .catch((err) => {
         setErrorMsg(err);
       });
 
-      const dataPushInt = setInterval(() => {
-        console.log('data is being pushed');
-        pushData(state);
-      }, 5500);
+      const dataPushInt = setInterval(pushData, 5500);
 
       return () => {
         clearInterval(dataPushInt);
       }
-  }, [state.weather.loading]);
+  }, []);
 
 
   if (loading) {
@@ -138,7 +129,7 @@ const Tracker = ({ navigation }) => {
               finishRecording(moment().format("MMMM Do YYYY, h:mm:ss a"))
             );
             dispatch(postToRecords(state.records.sessionRecord.data))
-            console.log(state.records.records);
+            // console.log(state.records.records);
           }}
         >
           <FinishBtnTxt> End Track </FinishBtnTxt>

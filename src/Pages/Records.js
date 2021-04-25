@@ -6,9 +6,14 @@ import TitleDesc from '../Components/TitleDesc'
 import {HomeContainer} from '../Pages/Home';
 import { ScrollView } from 'react-native-gesture-handler';
 
+/**
+ * Records component that renders the Records page.
+ * Lists data points per session.
+ */
 
 const Date = styled.Text`
   font-family: SourceSansPro_700Bold;
+  font-size: 18px;
 `;
 const DataNode = styled.View`
   margin: 10px 0;
@@ -42,34 +47,35 @@ const Records = () => {
           This page contains data that you have tracked.
         </Text>
       </TitleDesc>
-      <View>
+      <ScrollView>
         {
           records.map(( {date, data}, i) => {
             return (
-              <ScrollView key={i}>
-                <Date>{date}</Date>
+              <View key={i}>
+                <Date>Date: {date}</Date>
                 { data.map((datum,i) => {
-                  console.log(datum)
+                  console.log(datum);
                   return (
-                    <>
                     <DataNode key={i}>
-                      <Text>{i}_________________________</Text>
-                      <Text>location: {datum.location}</Text>
-                      <Text>place: {datum.place}</Text>
-                      <Text>temp: {datum.temp}</Text>
+                      <Text style={{ fontWeight: "700" }}>
+                        Datum: {i}_________________________
+                      </Text>
+                      <Text>
+                        location: {`${datum.location.long}(long), ${datum.location.lat}(lat)`}
+                      </Text>
+                      <Text>temp: {datum.temp} ˚F</Text>
                       <Text>weather: {datum.weather}</Text>
                       <Text>steps: {datum.steps}</Text>
                       <Text>time: {datum.timeStamp}</Text>
                     </DataNode>
-                    </>
                   );
                 })}
-                
-              </ScrollView>
+
+              </View>
             );
           })
         }
-      </View>
+      </ScrollView>
     </HomeContainer>
    )
   }

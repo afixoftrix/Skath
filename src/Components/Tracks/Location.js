@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Platform, Text, View, StyleSheet } from "react-native";
 import { updateLocation } from "../../redux/location";
 import { useDispatch } from "react-redux";
+import { collectLocation, collectPlace } from "../../redux/records";
 
 
 const Container = styled.View`
@@ -11,14 +12,10 @@ const Container = styled.View`
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 5px;
+  margin: 5px 0;
   padding: 10px;
   overflow: hidden;
-`;
-const Title = styled.Text`
-  font-size: 16px;
-  font-family: SourceSansPro_700Bold;
-  margin-bottom: 10px;
+  background-color: #fff;
 `;
 const Place = styled.View`
   display: flex;
@@ -46,6 +43,8 @@ const LocationTrack = ({ location, place, interval }) => {
   const dispatch = useDispatch();
   const updater = () => {
     dispatch(updateLocation({ location, place }));
+    dispatch(collectPlace(place));
+    dispatch(collectLocation(location));
   }
 
   useEffect(() => {

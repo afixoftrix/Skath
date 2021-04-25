@@ -21,6 +21,9 @@ const trackOptionsSlice = createSlice({
     removeOption: (state, option) => {
       pull(state.tracks, option.payload);
     },
+    resetTracks: (state, option) => {
+      state.tracks = [];
+    },
     changeInterval: (state, option) => {
       //Type here needs to be number or some devasting problems could occur.
       // In hindsight, maybe typescript is a smarter choice for apps like this.
@@ -32,5 +35,5 @@ const trackOptionsSlice = createSlice({
   },
 });
 
-export const { addOption, removeOption, changeInterval } = trackOptionsSlice.actions;
+export const { addOption, removeOption, changeInterval, resetTracks } = trackOptionsSlice.actions;
 export default trackOptionsSlice.reducer;

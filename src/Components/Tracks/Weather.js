@@ -19,7 +19,8 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
-  margin: 5px;
+  margin: 5px 0;
+  background-color: #fff;
 `;
 
 const Title = styled.Text`
@@ -39,6 +40,7 @@ const WeatherTrack = ({ location }) => {
   const { loading, data } = useSelector( state => state.weather);
 
   useEffect(() => {
+    console.log('getWeather should run next');
     dispatch(getWeather({ lat: location.lat, long: location.long })); 
   }, [])
 
