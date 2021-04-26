@@ -7,7 +7,7 @@ import {HomeContainer} from '../Pages/Home';
 import { ScrollView } from 'react-native-gesture-handler';
 
 /**
- * Records component that renders the Records page.
+ * Records page.
  * Lists data points per session.
  */
 
@@ -54,7 +54,6 @@ const Records = () => {
               <View key={i}>
                 <Date>Date: {date}</Date>
                 { data.map((datum,i) => {
-                  console.log(datum);
                   return (
                     <DataNode key={i}>
                       <Text style={{ fontWeight: "700" }}>

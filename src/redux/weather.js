@@ -60,16 +60,13 @@ const getWeatherSlice = createSlice({
   initialState,
   extraReducers: {
     [getWeather.pending]: (state) => {
-      console.log('weather call is pending')
       state.loading = true;
     },
     [getWeather.fulfilled]: (state, { payload }) => {
-      console.log('weather call has been fulfilled')
       state.data = {...payload};
       state.loading = false;
     },
     [getWeather.rejected]: (state) => {
-      console.log('weather call has failed')
       state.error = true;
       state.loading= false;
     }

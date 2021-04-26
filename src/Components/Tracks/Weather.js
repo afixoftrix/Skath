@@ -40,7 +40,6 @@ const WeatherTrack = ({ location }) => {
   const { loading, data } = useSelector( state => state.weather);
 
   useEffect(() => {
-    console.log('getWeather should run next');
     dispatch(getWeather({ lat: location.lat, long: location.long })); 
   }, [])
 
@@ -74,7 +73,6 @@ const WeatherTrack = ({ location }) => {
       );
     }
   } catch (error) {
-    console.log(error)
     return (
       <Container>
         <Text>Loading</Text>

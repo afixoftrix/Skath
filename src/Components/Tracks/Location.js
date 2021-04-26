@@ -51,7 +51,6 @@ const LocationTrack = ({ location, place, interval }) => {
     const updaterInterval = setInterval(updater, interval);
 
     return () => { 
-      console.log("location updater removed");
       clearInterval(updaterInterval);
     }
   }, [location]);

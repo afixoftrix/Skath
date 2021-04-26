@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+
+/**
+ * Selectable card component used on the tracking page
+ */
 
 const CardContainer = styled.TouchableOpacity`
   width: 50%;

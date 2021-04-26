@@ -1,4 +1,4 @@
-// a list of external APIs to call.
+// a list of external APIs to call that will be used with redux.
 
 export default {
   weather: (lat=0, lon=0) => ({

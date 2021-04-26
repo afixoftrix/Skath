@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Manages step count. Makes it available for other parts of the app to use if needed.
+
 const initialState = {
   steps: 0,
 };
@@ -9,7 +11,6 @@ const stepsSlice = createSlice({
   initialState,
   reducers: {
     updateSteps: (state, { payload }) => {
-      console.log('rdx payload: ', payload);
       state.steps = payload;
     },
     resetSteps: (state) => {

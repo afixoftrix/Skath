@@ -51,14 +51,6 @@ export const MainBtn = ({ btnTxt, bgImg, onPress }) => {
   );
 }
 
-export const NavBtn = () => {
-  return (
-    <Button onPress={() => { console.log("btn has been pressed")}}>
-      Press me
-    </Button>
-  )
-}
-
 export const BaseBtn = ({ name, onPress, disabled }) => {
   return (
     <BtnContainer disabled={disabled} onPress={onPress}>

@@ -47,7 +47,6 @@ const Tracker = ({ navigation }) => {
      * NOTE: There's probably a better way to implement these promises using async/await nomenclature.
      * I just dont remember how to use in this scenario at the time of coding this. So I'm using the old callback methods.
      */
-    console.log('use effect ran')
     Permissions.askAsync(Permissions.LOCATION)
       .then(() => {
         Location.getCurrentPositionAsync({}).then((res) => {
@@ -57,7 +56,6 @@ const Tracker = ({ navigation }) => {
             long: res.coords.longitude,
           };
           setCoords(coords);
-          console.log('coords was successful')
           Location.reverseGeocodeAsync({
             //Transform longitude and lattitude into human readable location
             longitude: coords.long,
@@ -69,18 +67,14 @@ const Tracker = ({ navigation }) => {
                 city: res[0].city,
                 country: res[0].country,
               });
-          console.log("location was successful");
-              console.log(loading)
               updateLocation({ location: coords, place: locationName});
-              console.log(locationName);
               dispatch(collectLocation(coords));
               dispatch(collectPlace(locationName));
               dispatch(collectTemp(state.weather.data.main.temp));
               dispatch(collectWeather(state.weather.data.weather[0].main));
               setLoading(false);
             })
-            .catch((err) =>{ 
-              console.log(err)
+            .catch(() =>{ 
               setLoading(false);
             });
         });
@@ -129,7 +123,6 @@ const Tracker = ({ navigation }) => {
               finishRecording(moment().format("MMMM Do YYYY, h:mm:ss a"))
             );
             dispatch(postToRecords(state.records.sessionRecord.data))
-            // console.log(state.records.records);
           }}
         >
           <FinishBtnTxt> End Track </FinishBtnTxt>

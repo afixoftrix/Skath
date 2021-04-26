@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
 
+/**
+ * State/Data management for the tracking information
+ */
+
 const initialState = {
   ticks: 0,
   datum: {
@@ -23,7 +27,6 @@ const recordsSlice = createSlice({
   initialState,
   reducers: {
     transferDatum: (state, { payload }) => {
-      console.log(state.datum);
       state.datum.timeStamp = moment().format();
       state.sessionRecord.data.push(state.datum);
     },

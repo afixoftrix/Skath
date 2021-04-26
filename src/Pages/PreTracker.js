@@ -44,6 +44,11 @@ const TrackBtnContainer = styled.View`
   width: 100%;
 `;
 
+/**
+ * 
+ * The PreTracker page is where you select options to track
+ */
+
 const PreTracker = ({ navigation }) => {
   const state = useSelector((state) => state.trackOptions);
   const dispatch = useDispatch();
@@ -51,7 +56,6 @@ const PreTracker = ({ navigation }) => {
   // const [validOptions, setValidOptions] = useState(false)
 
   useEffect(() => {
-    console.log(state.tracks.length);
     if (state.tracks.length > 0) {
       dispatch(resetTracks());
     }
