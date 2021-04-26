@@ -19,6 +19,10 @@ const BtnTxt = styled.Text`
   margin: auto 0;
 `;
 
+const BtnTxtContainer = styled.View`
+  padding-top: 60px;
+`;
+
 const BaseBtnText = styled.Text`
   font-family: SourceSansPro_700Bold;
   text-transform: uppercase;
@@ -40,13 +44,23 @@ export const FinishBtn = styled.TouchableOpacity`
 `;
 
 
-export const MainBtn = ({ btnTxt, bgImg, onPress }) => {
+export const MainBtn = ({ btnTxt, btnTxtB, bgImg, onPress }) => {
   return (
-    <BtnContainer bg={bgImg} style={styles.container} onPress={onPress} ht="200px">
+    <BtnContainer
+      bg={bgImg}
+      style={styles.container}
+      onPress={onPress}
+      ht="200px"
+    >
       <Image source={bgImg} style={styles.image} />
-        <BtnTxt style={{ fontFamily: "SourceSansPro_700Bold", lineHeight: 36}}>
+      <BtnTxtContainer>
+        <BtnTxt style={{ fontFamily: "SourceSansPro_700Bold", lineHeight: 36 }}>
           {btnTxt}
         </BtnTxt>
+        <BtnTxt style={{ fontFamily: "SourceSansPro_700Bold", lineHeight: 36 }}>
+          {btnTxtB}
+        </BtnTxt>
+      </BtnTxtContainer>
     </BtnContainer>
   );
 }
