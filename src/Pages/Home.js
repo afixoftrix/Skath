@@ -32,14 +32,16 @@ const Home = ({ navigation }) => {
       <ButtonsContainer>
         <MainBtn
           bgImg={startTrackingImg}
-          btnTxt="Start Tracking"
+          btnTxt="Start"
+          btnTxtB="Tracking"
           onPress={() => {
             navigation.push("Set Tracker");
           }}
         />
         <MainBtn
           bgImg={diaryEntryImg}
-          btnTxt="Data Entries"
+          btnTxt="Data"
+          btnTxtB="Entries"
           onPress={() => {
             navigation.push("Records");
           }}
